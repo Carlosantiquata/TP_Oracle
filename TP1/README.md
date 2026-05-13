@@ -63,6 +63,7 @@ Toutes les requêtes doivent être exécutables telles quelles sur FreeSQL, sur 
 > Vérifiez votre accès à FreeSQL avant de commencer.
 
 **Q0.** Lister les 5 premiers employés (`first_name`, `last_name`, `salary`) triés par salaire décroissant.
+SELECT FIRST_NAME, LAST_NAME, SALARY FROM HR.EMPLOYEES ORDER BY SALARY DESC FETCH FIRST 5 ROWS ONLY;
 
 ---
 
