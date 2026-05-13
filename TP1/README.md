@@ -73,7 +73,10 @@ SELECT FIRST_NAME, LAST_NAME, SALARY FROM HR.EMPLOYEES ORDER BY SALARY DESC FETC
 
 ### Q1. Classement intra-département
 Pour chaque employé, afficher : `last_name`, `department_id`, `salary`, et son **rang** (`RANK`) salarial **au sein de son département**. Trier par département puis rang.
-
+RANK() OVER (
+    [PARTITION BY ...]
+    ORDER BY ...
+)
 ### Q2. Top-N par groupe
 Lister les **3 employés les mieux payés de chaque département**. Utiliser une fonction de fenêtrage et une CTE.
 
