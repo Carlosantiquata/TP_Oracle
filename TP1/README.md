@@ -80,6 +80,24 @@ RANK() OVER (
 ### Q2. Top-N par groupe
 Lister les **3 employés les mieux payés de chaque département**. Utiliser une fonction de fenêtrage et une CTE.
 
+WITH QUESTION2 AS (
+    SELECT LAST_NAME,
+           DEPARTMENT_ID,
+           SALARY,
+           RANK() OVER (
+               PARTITION BY DEPARTMENT_ID
+               ORDER BY SALARY DESC
+           ) AS SALARY_RANK
+    FROM HR.EMPLOYEES
+)
+SELECT LAST_NAME,
+       DEPARTMENT_ID,
+       SALARY,
+       SALARY_RANK
+FROM QUESTION2
+WHERE SALARY_RANK <= 3
+ORDER BY DEPARTMENT_ID, SALARY_RANK;
+
 ### Q3. Quartiles de salaire
 Affecter chaque employé à un **quartile salarial global** (`NTILE(4)`). Afficher quartile, effectif, salaire min, salaire max par quartile.
 
